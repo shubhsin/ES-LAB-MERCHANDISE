@@ -1,0 +1,26 @@
+MOV 30h,#05h
+MOV 31h,#02h
+MOV 32h,#0Ah
+MOV 33h,#06h
+MOV 34h,#07h
+MOv 35h,#03h
+MOV 36h,#08h 
+MOV 37h,#50h
+MOV 38h,#40h
+MOV 39h,#22h
+
+MOV R2,#9
+MOV R0,#30h
+UP2:	MOV 03,R2
+	MOV 01,R0
+UP1:	INC R1
+	MOV A,@R0
+	MOV 10h,@R1
+	CJNE A,10h,down
+	SJMP skip1
+down:	JC skip1
+	XCH A,@R1
+	MOV @R0,A
+skip1:	DJNZ R3,UP1
+	INC R0
+	DJNZ R2,UP2

@@ -1,0 +1,33 @@
+;LCM of 2 numbers
+
+MOV 30H,#02H
+MOV 31H,#04H
+MOV 33H,#02H
+MOV 34H,#04H
+
+ACALL GCD_TWO
+MOV A,30H
+MOV B,31H
+MUL AB
+MOV B,32H
+DIV AB
+MOV 32H,A
+here:SJMP here
+
+GCD_TWO:
+UP:MOV A,33H
+CJNE A,34h,down
+SJMP exit
+down:	JC bga
+	MOV A,33h
+	CLR C
+	SUBB A,34h
+	MOV 33h,A
+	SJMP UP
+bga:	MOV A,34h
+	CLR C
+	SUBB A,33h
+	MOV 34h,A
+	SJMP UP
+exit:	MOV 32H,33H
+	RET

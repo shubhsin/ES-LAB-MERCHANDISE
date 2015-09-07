@@ -1,0 +1,3 @@
+MOV 03,#25H
+MOV R0,#03
+MOV A,@R0

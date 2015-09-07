@@ -1,0 +1,19 @@
+MOV 30H,#08H
+MOV 31H,#0CH
+MOV 33H,#08H
+MOV 34H,#0CH
+UP:MOV A,33H
+CJNE A,34h,down
+SJMP exit
+down:	JC bga
+	MOV A,33h
+	CLR C
+	SUBB A,34h
+	MOV 33h,A
+	SJMP UP
+bga:	MOV A,34h
+	CLR C
+	SUBB A,33h
+	MOV 34h,A
+	SJMP UP
+exit:	MOV 32H,33H
